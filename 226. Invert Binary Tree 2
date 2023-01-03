@@ -1,0 +1,17 @@
+class Solution {
+    public TreeNode invertTree(TreeNode root) {
+        if(root == null) return root;
+        LinkedList<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        while(!q.isEmpty()){
+            TreeNode n = q.peekFirst();
+            q.removeFirst();
+            if(n.left != null) q.add(n.left);
+            if(n.right != null) q.add(n.right);
+            TreeNode buf = n.left;
+            n.left = n.right;
+            n.right = buf;
+        }
+        return root;
+    }
+}
