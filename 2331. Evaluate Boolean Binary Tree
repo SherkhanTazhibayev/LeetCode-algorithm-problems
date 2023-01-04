@@ -1,0 +1,20 @@
+class Solution {
+    private static final int OR = 2;
+    private static final int TRUE = 1;  
+  
+    public boolean evaluateTree(TreeNode root) {
+	  // only OR/AND have left and right subtrees, when present both
+	  // then we should evaluate boolean logic
+      if (root.left != null && root.right != null) {
+        var left = evaluateTree(root.left);
+        var right = evaluateTree(root.right);
+
+        return root.val == OR
+            ? left || right
+            : left && right;
+      }
+
+      // otherwise it is bool literal (true/false)
+      return root.val == TRUE;    
+    }
+}
