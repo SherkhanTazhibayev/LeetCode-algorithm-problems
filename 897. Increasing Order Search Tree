@@ -1,0 +1,19 @@
+class Solution {    
+    public TreeNode increasingBST(TreeNode root) {
+        return increasingBST(root, null);
+    }
+
+    public TreeNode increasingBST(TreeNode root, TreeNode tail) {
+        if(root == null) {
+            if(tail != null) System.out.println("return tail " + tail + " --> " + tail.val);
+            return tail;
+        }
+        System.out.println("iterate --> " + root.val);
+        TreeNode res = increasingBST(root.left, root);
+        System.out.println("      res >>  " + root + " >> " + root.val);
+        root.left = null;
+        if(root.right != null) System.out.println("      root.right >>  " + root + " >> " + root.val);
+        root.right = increasingBST(root.right, tail);
+        return res;
+    }
+}
