@@ -1,0 +1,38 @@
+/*
+class Node {
+    public int val;
+    public List<Node> children;
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+};
+*/
+
+class Solution {
+    static List<Integer> list;
+    
+    public List<Integer> postorder(Node root) {
+        list = new ArrayList<>();
+        traverse(root);
+        System.out.println("return list");
+        return list;
+    }
+
+    private void traverse(Node root) {
+        if (root == null) return;
+
+        for (Node child : root.children) {
+            System.out.println("traverse(child) " + child.val);
+            traverse(child);
+        }
+        System.out.println(root.val);
+        list.add(root.val);
+    }
+}
