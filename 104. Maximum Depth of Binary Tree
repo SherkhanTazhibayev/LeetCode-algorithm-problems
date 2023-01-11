@@ -1,0 +1,26 @@
+class Solution {
+    int maxDepth = 1;
+    int currDepth = 1;
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        traverse(root);
+        return maxDepth;
+    }
+    
+    private void traverse(TreeNode node){
+        if(node.left == null && node.right == null){
+            maxDepth = Math.max(maxDepth, currDepth);
+        }
+        currDepth++;
+
+        if(node.left != null){
+            traverse(node.left);
+        }
+        
+        if(node.right != null){
+            traverse(node.right);
+        }
+
+        currDepth--;
+    }
+}
