@@ -1,0 +1,21 @@
+class Solution {
+    static int max_cnt = 0;
+    public int maxDepth(Node root){
+        System.out.println(">>> start");
+        if(root == null){
+            return 0;
+        }
+        int max = 0;
+        max_cnt += 1;
+        System.out.println("recursion: " + max_cnt);
+        for(Node leaf : root.children){     
+            System.out.println("        put: " + max);   
+            System.out.println("              leaf.val: " + leaf.val);
+            max = Math.max(max, maxDepth(leaf));
+            System.out.println(" RETURN NULL: " + (max)); 
+        }
+
+        return ++max;
+    }
+}
+
