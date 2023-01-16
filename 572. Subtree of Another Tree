@@ -1,0 +1,14 @@
+class Solution {
+    public boolean isSubtree(TreeNode s, TreeNode t) {
+        if (t == null) return true;
+        else if ( s == null) return false;
+        return isEq(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+    }
+    
+    public boolean isEq(TreeNode s, TreeNode t){
+        if (t == null) return s == null;
+        if (s == null) return t == null; // need to check if either is null other than only one node;
+        if (s.val != t.val) return false; // early quit;
+        return isEq(s.left, t.left) && isEq(s.right, t.right);
+    }
+}
